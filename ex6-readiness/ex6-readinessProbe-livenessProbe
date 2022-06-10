@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sprintseries
+  labels:
+    app: sprintseries
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sprintseries
+  template:
+    metadata:
+      labels:
+        app: sprintseries
+    spec:
+      containers:
+        - name: sprintseries
+          image: aksdevops20220609team02.azurecr.io/sprintseries:v3
+          ports:
+            - containerPort: 80
+          env:
+          - name: APP_ENVIRONMENT
+            value: development
+          readinessProbe: #어플리케이션 - status
+            httpGet:
+              path: '/'
+              port: 80
+            periodSeconds: 3
+            timeoutSeconds: 30
+          
+          livenessProbe: #컨테이너 - ready : 로드밸런서가 가리켜주는 상태인가 (트래픽 여부)
+            exec:
+              command:
+              - cat
+            periodSeconds: 5
+            failureThreshold: 15
+
+          
