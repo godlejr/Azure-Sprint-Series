@@ -1,0 +1,127 @@
+
+<!-- saved from url=(0102)https://azuresprintcommon.blob.core.windows.net/content/aksdevops/challenges/ko/challenge1/README.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>개요 - Sprint Series</title>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="./개요 - Sprint Series_files/github-markdown.min.css" integrity="sha384-41TLk51mEPibuqZ3qC5guTOeo30Zt7UUaWLUn0/VdpGRO6b3SXA6AaKxj1mYzgAT" crossorigin="anonymous">
+		<style>
+				.markdown-body {
+					box-sizing: border-box;
+					min-width: 200px;
+					max-width: 980px;
+					margin: 0 auto;
+					padding: 45px;
+					background-color: #fff;
+				}
+
+				@media (max-width: 767px) {
+					.markdown-body {
+						padding: 15px;
+					}
+				}
+		</style>
+	</head>
+	<body>
+		<article class="markdown-body">
+<p><img src="./개요 - Sprint Series_files/banner.png" alt="Azure Sprint Series Logo"></p>
+<h2 id="시나리오">시나리오</h2>
+<p>인프라 관리는 쉬운 작업이 아닙니다. 최신 개발 환경에서 작업할 때에는, 변화에 적응하는 유연성 제공을 항상 시도하면서 여러 다른 환경을 관리하고, 서비스 배포를 조화롭게 편성하여 서버 부하 용량을 관리할 줄도 알아야 합니다. Azure Kubernetes Service(AKS) 및 Azure DevOps는 고객이 단순히 인프라를 관리하는 것이 아닌 인프라 환경을 향상하는데 집중할 수 있도록 하는 시스템을 구축하는 견고한 프레임워크를 제공합니다.</p>
+<p>여러분은 합리적인 가격으로 제공하는 의약품를 생산하고 유통하는 Tailspin Pharmaceuticals라는 전문회사에서 인프라를 관리하는 엔지니어입니다. 오랜 역사를 갖는 이 회사는 여러 대의 기존 가상 머신에서 다수의 다른 애플리케이션을 실행하고 있습니다. 이런 애플리케이션은 보통 다른 애플리케이션과 상충되어 자체적으로 특별한 환경을 필요로 하기 때문에 자체 가상 머신에만 의존해야 하므로 운영 비용을 증가시킵니다. 또한, 더 많은 사용자가 의약품 주문을 시작함에 따라 온라인 가동 시간은 점점 더 중요한 것이 되고 있으며, 이것은 애플리케이션이나 머신의 갱신이 필요할 때마다 중단 창을 요구하는 자체 레거시 인프라로는 달성하기 어려운 것입니다.</p>
+<p>Tailspin Pharmaceuticals는 벤더가 제공한 기존 코드베이스에 대한 개발 수명주기 현대화를 시작으로 이런 문제에 대한 해법을 찾는 과제를 여러분에게 부여했습니다. 이 코드는 현재 Apache HTTP Server를 구동하는 사내 가상 머신에서 실행되고 있습니다. Tailspin Pharmaceuticals는 기반 인프라 관리가 필요 없거나 코드베이스의 중대한 변화 없이, 고가용성, 효과적인 자원 활용, 확장성 그리고 더 빠른 엔드 포인트 간 배포 경로를 제공하는 플랫폼으로 애플리케이션을 이동시킬 수 있는 것을 여러분이 증명해줄 것을 기대합니다.</p>
+<h1 id="도전-과제-1-컨테이너">도전 과제 1: 컨테이너</h1>
+<p>컨테이너는 애플리케이션 캡슐화 그리고 그 종속성의 경량화 방법을 단일 패키지로 제공합니다. 이를 통해 현재 컴퓨팅 환경에 관계 없이 애플리케이션을 빠르고 신뢰성 있게 실행할 수 있도록 하는 향상된 이식성과 격리(isolation)를 제공합니다. 이 도전 과제는 여러분의 로컬 머신에 컨테이너를 구축하고 실행하는 것에 중점을 둡니다.</p>
+<p>이 첫 번째 도전 과제는 컨테이너와 여러분의 소프트웨어를 컨테이너의 이점을 활용하는 패키지로 쉽게 만드는 방법을 소개합니다. 그 다음, 우리가 구성하는 환경과 로컬 머신에서 테스트한 버전이 일치하도록 하면서, 해당 컨테이너를 클라우드의 여러 위치에 배포할 수 있습니다.</p>
+<h1 id="exercise-1">Exercise 1</h1>
+<p>전반 내용 자체를 통해 여러분이 혼자 진행하는 것도 가능하지만, 팀원 분들과 함께 살펴보면서 내용을 서로 공유하는 방향을 권장합니다. Microsoft Teams는 모든 주요 공지에 대한 일종의 커뮤니케이션 허브 역할을 할 뿐만 아니라 여러분의 코치 및 다른 참여자와 내용을 논의하는 온라인 공간을 제공하기도 합니다.</p>
+<h2 id="task">Task</h2>
+<p>여러분 자신을 나머지 팀원과 코치에게 소개합니다. Teams 채널에 가입하고 참여한 다음 단체 채팅방에서 자신을 소개합니다.</p>
+<h2 id="hints">Hints</h2>
+<ul>
+<li>힌트는 해결책으로 여러분을 인도하는데 도움을 줄 것입니다!</li>
+<li>아래 유용한 자원은 주제를 더 잘 학습하는데 도움이 되는 중요 문서를 제공합니다.</li>
+<li>여러분을 인도하고 내용과 관련된 질문에 대해 답하기 위해 팀 코치가 있습니다. 막히는 부분이 있으면 코치에게 물어봅니다.</li>
+</ul>
+<h2 id="유용한-리소스">유용한 리소스</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/ko-kr/microsoftteams/microsoft-teams">Microsoft Teams 문서</a></li>
+</ul>
+<h1 id="exercise-2">Exercise 2</h1>
+<p>컨테이너를 실행하고 개발하는 방법에는 여러 가지가 있는데, 로컬에서 컨테이너를 이용해 작업하기 위한 공통 플랫폼을 "Docker Desktop" 이라고 합니다. Docker Desktop은 Windows 및 Linux 플랫폼 모두에 대해 잘 지원된 컨테이너 구축 방법을 허용합니다.</p>
+<p>이 연습의 경우 개발 환경이 설정되어 있고 Docker 데몬이 실행 중이라는 것을 확인하게 됩니다.</p>
+<h2 id="tasks">Tasks</h2>
+<ul>
+<li>Docker Desktop이 Linux 컨테이너를 실행하도록 구성되어 있는지 확인합니다.</li>
+<li>"hello-world" 이미지를 실행합니다(이를 통해 Docker가 올바르게 설정되어 있는지 확인).</li>
+<li>명시적인 "Linux" 태그를 이용해 "hello-world" 이미지를 실행합니다 (이를 통해 Linux 컨테이너를 실행할 수 있는지 확인).</li>
+<li>이전 단계에서 생성한 이미지와 컨테이너를 나열합니다.</li>
+</ul>
+<h2 id="hints-1">Hints</h2>
+<ul>
+<li>여러분의 환경에서 Docker Desktop을 액세스할 수 없는 경우, 코치에게 지원을 요청합니다.</li>
+<li>태그를 사용하여 이미지의 특정 버전을 명시할 수 있습니다.  태그를 명시하지 않으면 "latest" 태그가 적용됩니다.</li>
+</ul>
+<h2 id="유용한-리소스-1">유용한 리소스</h2>
+<ul>
+<li><a href="https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers">Linux 및 Windows 컨테이너 사이의 전환</a></li>
+<li><a href="https://hub.docker.com/_/hello-world">Docker Hub에 있는 Hello World 이미지</a></li>
+<li><a href="https://docs.docker.com/get-started/">Docker로 시작하기</a></li>
+<li><a href="https://docs.docker.com/engine/reference/run/#imagetag">Docker 실행을 위한 레퍼런스</a></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/docker/">Docker 커맨드 라인 레퍼런스</a></li>
+</ul>
+<h1 id="exercise-3">Exercise 3</h1>
+<p>이전 연습을 통해 Docker Hub에 이미 배포된 이미지를 이용해 컨테이너를 실행하는 방법을 시연했습니다. 일반적으로는 비즈니스 또는 레거시 애플리케이션이 Docker Hub에 배포되지 않습니다. 이러한 애플리케이션은 "Dockerfile"로 알려진 선언형 스크립트를 이용해 구축할 수 있습니다.</p>
+<p>구축부터 실행까지에 있어 다소 빠듯한 일정을 갖는 PHP 애플리케이션이 벤더로부터 제공되었습니다. 안타깝게도, 여러분의 현재 인프라는 이 애플리케이션이 필요로 하는 새로운 버전의 PHP를 지원하도록 구성되어 있지 않습니다. 이 연습을 통해 여러분은 PHP 애플리케이션에 서비스 제공을 위해 사용할 Dockerfile로 여러분의 이미지를 생성할 수 있게 됩니다.</p>
+<h2 id="tasks-1">Tasks</h2>
+<ul>
+<li>빈 "Dockerfile"을 생성합니다.</li>
+<li>Dockerfile에서 "php:7.4-apache" 베이스 이미지를 사용하는 것으로 Docker를 수정해 본 다음, <code>sprintseries:v1</code>로 태그를 지정해봅니다.</li>
+<li>이전 단계에서 제공한 태그 이름을 이용해 자신의 이미지를 실행합니다. 이를 실행하더라도, 아직은 컨테이너에 접속할 수는 없을 것입니다!</li>
+<li>컨테이너를 중지하고 시스템에서 삭제합니다.</li>
+<li>웹 서버가 실행 중임을 확인할 수 있도록 로컬 머신에 포트 번호 80번을 포워딩하도록 이미지를 사용해 컨테이너를 실행합니다.<ul>
+<li>Note: 서비스할 웹 서버에 어떤 파일도 업로드하지 않았기 대문에 기본 페이지에는 "Forbidden" (금지됨)이 나타나게 됩니다.</li></ul></li>
+<li>이전 작업에서 실행한 컨테이너를 중지하여 정리합니다.</li>
+</ul>
+<h2 id="hints-2">Hints</h2>
+<ul>
+<li>이 단계에서는 Dockerfile을 단일 라인을 포함하며, 이는 나중에 보다 자세한 내용을 포함할 예정입니다.</li>
+<li><code>apache2 -D FOREGROUND</code> 출력 뒤에 오류가 없으면 서버는 실행 중인 상태입니다.</li>
+<li><code>Usage: apache2</code> 또는 <code>/usr/local/bin/docker-php-entrypoint</code>와 같은 출력이 있으면 제공한 명령어 순서를 점검합니다. 이미지 이름 뒤에 제공된 명령어는 컨테이너로 전달됩니다.</li>
+<li>컨테이너 중지는 컨테이너를 삭제하지 않으며 <code>docker ps -a</code> 를 이용하여 중지된 컨테이너를 포함한 모든 컨테이너를 볼 수 있습니다.</li>
+<li>이 시간 동안에는 어떤 코드 파일을 추가하거나 수정할 필요가 없습니다.</li>
+<li>여러분의 머신에서 이미 포트 번호 80번이 사용 중일 수 있습니다. 로컬 머신에 포워딩하는 포트 번호는 컨테이너에서 노출된 포트 번호와 일치하지 않아도 됩니다!</li>
+</ul>
+<h2 id="유용한-리소스-2">유용한 리소스</h2>
+<ul>
+<li><a href="https://docs.docker.com/engine/reference/builder/">Dockerfile 레퍼런스</a></li>
+<li><a href="https://docs.docker.com/engine/reference/builder/#from">FROM 명령에 대한 안내</a></li>
+<li><a href="https://docs.docker.com/config/containers/container-networking/">포트 번호 퍼블리싱하기</a></li>
+</ul>
+<h1 id="exercise-4">Exercise 4</h1>
+<p>서버가 정상적으로 실행 중입니다! 이제는 애플리케이션 코드를 이미지에 추가해 어떤 환경에서든 실행할 준비가 되도록 이미지를 마무리할 좋은 시점이라 할 수 있겠습니다.</p>
+<p>이 이미지는 어떤 환경에서든 실행될 수 있기 때문에, 환경 사이의 변화(테스트 환경 또는 상용 환경)가 애플리케이션에 의해 처리될 수 있도록 실행 시 애플리케이션에 대한 설정을 반드시 제공해야 합니다. 실행 시 애플리케이션에 데이터를 제공하는 일반적인 방법은 환경 변수를 이용하는 것입니다.</p>
+<h2 id="tasks-2">Tasks</h2>
+<ul>
+<li>코드를 여기에서 다운로드합니다 : <a href="https://azuresprintcommon.blob.core.windows.net/content/aksdevops/application/v1/index.php">Application v1</a></li>
+<li>Dockerfile을 개선하여 애플리케이션 파일을 이미지에 복사합니다.</li>
+<li>개발 머신에서 웹 브라우저를 사용하여 웹 서버에 접속 후 코드가 실행 중인지 확인합니다.</li>
+<li>런타임에서 환경 변수를 <code>development</code> 로 설정하기 위해 환경 변수 <code>APP_ENVIRONMENT</code> 를 컨테이너에 전달합니다.</li>
+</ul>
+<h2 id="hints-3">Hints</h2>
+<ul>
+<li>도움이 필요한 경우 유용한 자원을 참조하십시오!</li>
+<li>컨테이너 내부 기본 작업 디렉토리는 <code>/var/www/html/</code> 입니다.</li>
+<li><code>index.php</code> 파일명을 변경하는 것에 대해서는 주의하십시오. 이 파일 이름을 변경한다는 것은 Apache 설정 관련 추가적인 구성을 필요로 한다는 것을 의미합니다.</li>
+</ul>
+<h2 id="유용한-리소스-3">유용한 리소스</h2>
+<ul>
+<li><a href="https://hub.docker.com/_/php">PHP 컨테이너 레퍼런스 (apache variant가 나올 때까지 스크롤을 내려보세요)</a></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/docker/">Docker 커맨드 라인 레퍼런스</a></li>
+<li><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices">Dockerfile에 대한 모범 사례</a></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables--e---env---env-file">환경 변수 설정하기</a></li>
+</ul>
+<h1 id="마무리-단계">마무리 단계</h1>
+<p>코치에게 다음 문제에 대해 준비되었음을 알리고, 궁금한 점이 있으실 경우 편히 질문해 보세요!</p>
+		</article>
+	
+</body></html>

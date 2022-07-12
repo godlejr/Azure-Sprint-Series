@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sprintseries
+  labels:
+    app: sprintseries
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sprintseries
+  template:
+    metadata:
+      labels:
+        app: sprintseries
+    spec:
+      containers:
+        - name: sprintseries
+          image: aksdevops20220609team02.azurecr.io/sprintseries:v5
+          ports:
+            - containerPort: 80
+          env:
+            - name: APP_ENVIRONMENT
+              value: development
+          readinessProbe:
+            httpGet:
+              path: '/'
+              port: 80
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 3
+            periodSeconds: 3
+            failureThreshold: 15
+

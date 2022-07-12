@@ -1,0 +1,113 @@
+
+<!-- saved from url=(0102)https://azuresprintcommon.blob.core.windows.net/content/aksdevops/challenges/ko/challenge2/README.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>개요 - Sprint Series</title>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="./개요 - Sprint Series_files/github-markdown.min.css" integrity="sha384-41TLk51mEPibuqZ3qC5guTOeo30Zt7UUaWLUn0/VdpGRO6b3SXA6AaKxj1mYzgAT" crossorigin="anonymous">
+		<style>
+				.markdown-body {
+					box-sizing: border-box;
+					min-width: 200px;
+					max-width: 980px;
+					margin: 0 auto;
+					padding: 45px;
+					background-color: #fff;
+				}
+
+				@media (max-width: 767px) {
+					.markdown-body {
+						padding: 15px;
+					}
+				}
+		</style>
+	</head>
+	<body>
+		<article class="markdown-body">
+<p><img src="./개요 - Sprint Series_files/banner.png" alt="Azure Sprint Series Logo"></p>
+<h1 id="도전-과제-2-컨테이너-배포">도전 과제 2: 컨테이너 배포</h1>
+<p>이제, 이전 단계에서 생성한 이미지를 새로운 환경에 배포할 준비가 되었습니다. 이 이미지는 현재 여러분의 개발 머신에서만 이용할 수 있기 때문에 Azure에서 이용 가능한 도구를 활용해 이 이미지를 올바른 접근 권한(credentials)을 사용하여 컨테이너 오케스트레이터에 의해 액세스할 수 있는 클라우드에 안전하게 배포해야 합니다.</p>
+<h1 id="exercise-1">Exercise 1</h1>
+<p>컨테이너는 뛰어난 휴대성을 자랑하며, 다수의 퍼블릭, 프라이빗 및 하이브리드 클라우드 구성에 유용합니다. Azure는 컨테이너 솔루션 오케스트레이션, 배포 및 구축을 위한 최상급의 지원을 제공하는 클라우드 솔루션입니다. 이 연습을 통해 여러분은 Azure와 워크샵을 위해 셋업된 환경에 익숙해지게 됩니다.</p>
+<h2 id="tasks">Tasks</h2>
+<ul>
+<li>워크샵을 위해 제공되는 접근 권한 (credentials)을 사용하여 Azure Portal에 로그인합니다.</li>
+<li>세 개의 자원 그룹을 볼 수 있는지 확인합니다. 이 그룹은 이 실습용으로 설정된 자원을 포함하고 있습니다.</li>
+</ul>
+<h2 id="hints">Hints</h2>
+<ul>
+<li>Azure에 로그인하기 위해 올바른 계정을 사용 중인지 확인합니다. 이 계정은 "azurelabs.io"로 끝나야 합니다.</li>
+</ul>
+<h2 id="유용한-리소스">유용한 리소스</h2>
+<ul>
+<li><a href="https://portal.azure.com/">Azure Portal</a></li>
+</ul>
+<h1 id="exercise-2">Exercise 2</h1>
+<p>이전 연습에서 본 것처럼, 이미 많은 다른 자원이 배포되어 있습니다. Azure로 전세계 많은 곳에 수백 개의 다른 서비스를 쉽게 배포할 수 있습니다.</p>
+<p>크고 다루기 힘든 바이너리 이미지 파일을 직접 배포하지 않고, 주로 컨테이너 레지스트리를 통해 컨테이너를 배포합니다. 컨테이너 레지스트리는, 컨테이너 이미지와 메타데이터를 호스팅하면서 컨테이너 오케스트레이터가 컨테이너를 쉽게 배포할 수 있게 하는 서버 측 애플리케이션입니다.</p>
+<p>이 애플리케이션 배포를 위해 여러분에게 주어진 요구사항은 이미지 저장 장소 및 방법에 대해 여러분이 엄격한 제어권을 가질 것을 요구합니다. 이런 컨테이너 레지스트리의 유지 및 보호는 어려운 작업일 수 있지만, 다행스럽게도 Azure는 안전한 컨테이너 레지스트리를 매우 짧은 시간 내에 구성하고 설정할 수 있도록 하는 서비스(Azure Container Registry)를 제공합니다. 이를 통해 여러분이 이미지를 업로드할 수 있고, 여러분이 제공한 정보 이름과 태그를 기초로 소비자가 이 이미지를 사용할 수 있습니다.</p>
+<p>이 연습을 통해, 여러분은 다른 환경에 여러분의 이미지를 배포하는 후속 단계에서 사용할 Azure Container Registry를 배포할 수 있게 됩니다.</p>
+<h2 id="tasks-1">Tasks</h2>
+<ul>
+<li>Azure Container Registry를 <strong>aci</strong>로 끝나는 리소스 그룹에 배포합니다.<ul>
+<li>Azure Container Registry에 대한 admin 사용자를 활성화합니다. 이것은 이후 도전 과제에서 인증을 할 때 유용합니다.</li></ul></li>
+<li>Azure Container Registry에 배포하기 위해 도전 과제 1에서 만든 이미지에 태그를 붙입니다.</li>
+<li>이미지를 Azure Container Registry에 푸시합니다.</li>
+<li>개발 컴퓨터에서 이미지를 삭제하고, Azure Container Registry를 통해 이미지를 다운로드하여 실행합니다.</li>
+</ul>
+<h2 id="hints-1">Hints</h2>
+<ul>
+<li>다른 리소스 그룹에서 생성하나 컨테이너 레지스트리가 있을 수도 있습니다. 이는 다음 챌린지에서 사용 예정이니 지금은 신경쓰지 않으셔도 됩니다.</li>
+</ul>
+<h2 id="유용한-리소스-1">유용한 리소스</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/ko-kr/azure/container-registry/container-registry-get-started-portal?ocid=AID3042832">컨테이너 레지스트리 시작하기</a></li>
+<li><a href="https://docs.microsoft.com/ko-kr/azure/container-registry/container-registry-authentication?ocid=AID3042832#admin-account">컨테이너 레지스트리 인증</a></li>
+</ul>
+<h1 id="exercise-3">Exercise 3</h1>
+<p>이미지를 Azure Container 레지스트리에 성공적으로 배포했다면, 다음 단계는 애플리케이션을 클라우드에 호스팅하고 배포를 완료하는 것입니다! Azure에서는 Azure Container Instance를 이용해 클라우드에 컨테이너를 간단히 배포합니다. Azure Container Instance는 가상 머신 인프라 관리의 오버헤드 없이 빠르고 단순한 애플리케이션 배포를 필요로 하는 간단한 컨테이너 오케스트레이션 워크로드에 주로 사용됩니다.</p>
+<p>이 연습을 통해, 여러분은 Azure Container 레지스트리와 Azure Container Instance를 이용해 애플리케이션을 실행할 수 있게 됩니다.</p>
+<h2 id="tasks-2">Tasks</h2>
+<ul>
+<li>Azure Container Instance를 "-aci" 리소스 그룹에 생성합니다.<ul>
+<li>Azure Container Registry에서 Azure Container Instance로 이미지를 배포합니다.</li>
+<li>이 ACI를 생성할 때에는 환경 변수를 반드시 설정하십시오.</li></ul></li>
+<li>웹사이트를 살펴봅니다. 이 사이트가 웹 브라우저에서 실행 중이면 모든 환경 변수가 올바르게 설정되어 있는지 확인합니다!</li>
+</ul>
+<h2 id="hints-2">Hints</h2>
+<ul>
+<li>여러분이 액세스 가능한 리소스 그룹이 여러 개가 있습니다. <strong>-aci</strong> 라는 이름을 가진 리소스 그룹에 배포를 확인합니다. 다른 리소스 그룹들은 추후 도전 과제에 사용 예정입니다.<ul>
+<li>Azure Container Instance는 또한 폭발적인 트래픽 처리 능력을 요구하는 온디멘드 데이터 처리 작업 및 워크로드에 대해 정상적으로 작동합니다. 이는 종종 정적으로 제공하는 VM 및 초당 과금에 비해 비용이 적게 듭니다.</li></ul></li>
+</ul>
+<h2 id="유용한-리소스-2">유용한 리소스</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/ko-kr/azure/container-instances/container-instances-quickstart-portal?ocid=AID3042832">빠른 시작 - 컨테이너 인스턴스 배포</a></li>
+<li><a href="https://docs.microsoft.com/ko-kr/azure/container-instances/container-instances-environment-variables?ocid=AID3042832">컨테이너 인스턴스에서 환경 변수 설정</a></li>
+</ul>
+<h1 id="exercise-4">Exercise 4</h1>
+<p>벤더에서 새로운 버전의 애플리케이션을 발표했습니다. 이 코드는 제대로 테스트되지는 않았지만 상용 환경에 이를 즉시 배포해야 한다고 벤더에서 이야기합니다. 테스트되지 않은 코드 배포는 여러분에게 의도치 않은 결과를 초래할 수 있지만, 태그를 이용해 애플리케이션에 버전을 부여함으로써 뭔가 잘못되면 대상 컨테이너를 처음부터 다시 구축하지 않고 코드를 롤백할 수 있습니다.</p>
+<p>이 연습을 통해, 버전 태그와 함께 새로운 애플리케이션을 배포하고, 이전 애플리케이션 버전으로 롤백할 수 있게 됩니다.</p>
+<h2 id="tasks-3">Tasks</h2>
+<ul>
+<li>다음 링크에서 새로운 애플리케이션을 가져와 배포합니다 : <a href="https://azuresprintcommon.blob.core.windows.net/content/aksdevops/application/v2/index.php">Application v2</a><ul>
+<li>이미지를 빌드하고 푸시해야 합니다</li>
+<li>모든 다른 설정은 동일하게 유지하면서(특히 포트 설정) Azure CLI를 이용해 이미지를 변경합니다. 다른 방법으로는, 다른 이미지를 갖는 새로운 컨테이너 인스턴스를 생성할 수 있습니다.</li></ul></li>
+<li>포털에서 웹 사이트를 확인하면 에러 메시지가 나올 것입니다.</li>
+<li>로그를 조사해 오류가 기록된 곳을 찾습니다.</li>
+<li>이전 애플리케이션 버전으로 되돌립니다.</li>
+<li>웹사이트가 백업되어 있는지 확인합니다.</li>
+<li>노드 장애를 시뮬레이션하고자 컨테이너 인스턴스를 중지합니다.</li>
+<li>컨테이너를 보고 컨테이너가 중지되었음을 확인합니다.</li>
+</ul>
+<h2 id="유용한-리소스-3">유용한 리소스</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/ko-kr/azure/container-instances/container-instances-stop-start?ocid=AID3042832">ACI에서 컨테이너 시작 및 중지</a></li>
+<li><a href="https://docs.microsoft.com/ko-kr/azure/container-instances/container-instances-update?ocid=AID3042832">ACI 설정 업데이트하기</a></li>
+<li><a href="https://docs.microsoft.com/ko-kr/azure/container-instances/container-instances-get-logs?ocid=AID3042832">ACI에서 로그 살펴보기</a></li>
+<li><a href="https://github.com/MicrosoftFeedback/aci-issues/issues/26">Azure CLI로 컨테이너 업데이트시 오류 참고</a></li>
+</ul>
+<h1 id="마무리-단계">마무리 단계</h1>
+<p>코치에게 다음 문제에 대해 준비되었음을 알리고, 궁금한 점이 있으실 경우 편히 질문해 보세요!</p>
+		</article>
+	
+</body></html>
